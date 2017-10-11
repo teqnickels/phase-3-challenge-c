@@ -11,19 +11,21 @@ app.get('/api/shout/:word', (request, response) => {
   
   response.set('content-type', 'text/plain')
     .send(word)
-    .sendStatus(200)
+    .status(200)
 })
 
 app.post('/api/array/merge', (request, response) => {
-  response.set('content-type','application/json')
+  // response.set('content-type', 'application/json')
   const body = request.body
   const array1 = body.a
   const array2 = body.b  
   if (Array.isArray(array1) && Array.isArray(array2)) {
     let combinedArray = interleave(array1, array2)
     let result = {"result": combinedArray}
-    response.json(result)
+    response.status(200)
+      .json(result)
   }else{
+    response.status(400)
     throw 'Entry must be an array'
   }
 });
