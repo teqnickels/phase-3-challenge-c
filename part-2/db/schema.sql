@@ -14,7 +14,8 @@ DROP TABLE IF EXISTS guests;
 CREATE TABLE guests (
   id SERIAL PRIMARY KEY,
   name VARCHAR(255),
-  email VARCHAR(255)
+  email VARCHAR(255),
+  room_number866 485 4639
 );
 
 DROP TABLE IF EXISTS bookings;
