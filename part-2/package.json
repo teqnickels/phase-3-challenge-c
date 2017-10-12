@@ -10,6 +10,7 @@
   "author": "debrena",
   "license": "MIT",
   "dependencies": {
+    "console.table": "^0.9.1",
     "pg-promise": "^7.0.1"
   }
 }

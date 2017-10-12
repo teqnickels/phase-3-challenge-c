@@ -36,3 +36,24 @@ const upcomingBookings = `SELECT
   rooms ON rooms.id = bookings.room_id
   WHERE check_in > DATE(NOW())
   OR check_out > DATE(NOW())`
+
+
+const singleRooms = `SELECT
+	room_number, 
+	name, 
+	check_in, 
+	check_out
+  FROM
+  guests
+  INNER JOIN
+  bookings ON guests.id = bookings.guest_id
+  INNER JOIN
+  rooms ON rooms.id = bookings.room_id
+  WHERE room_number = $1 AND (check_in > DATE(NOW()) OR (check_out > DATE(NOW())))`
+
+const queryFunctions = {
+  list : () => db.any(listGuests), 
+}
+
+module.exports = queryFunctions
+
