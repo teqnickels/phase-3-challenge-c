@@ -4,15 +4,10 @@ const db = pgp(`postgres://${process.env.USER}@localhost:5432/hotel_db`)
 
 const listGuests = 'SELECT * FROM guests'
 const listAllRooms = `SELECT 
-  room_number, 
-  capacity, 
-  CASE
-  WHEN check_out < DATE(NOW()) THEN 'true'
-  WHEN check_out > DATE(NOW()) THEN 'false'
-  END AS available
-  FROM rooms
-  JOIN bookings 
-  ON rooms.id = bookings.room_id`
+room_number, 
+capacity, 
+CASE WHEN check_out < DATE(NOW()) THEN 'true' WHEN check_out > DATE(NOW()) THEN 'false' 
+END AS available FROM rooms JOIN bookings ON rooms.id = bookings.room_id`
 
 const listRoomsAvailable = `SELECT
   room_number, 
@@ -52,8 +47,11 @@ const singleRooms = `SELECT
   WHERE room_number = $1 AND (check_in > DATE(NOW()) OR (check_out > DATE(NOW())))`
 
 const queryFunctions = {
-  list : () => db.any(listGuests), 
+  list : () => db.any(listGuests),
+  listAll: () => db.any(listAllRooms),
+  listAvailable: () => db.any(listRoomsAvailable), 
+  bookings: () => db.any(upcomingBookings)
 }
 
-module.exports = queryFunctions
+module.exports = { queryFunctions, pgp }
 
