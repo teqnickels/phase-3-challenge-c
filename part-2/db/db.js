@@ -3,7 +3,6 @@ const pgp = pgPromise()
 const db = pgp(`postgres://${process.env.USER}@localhost:5432/hotel_db`)
 
 const listGuests = 'SELECT * FROM guests'
-
 const listAllRooms = `SELECT 
   room_number, 
   capacity, 
@@ -23,7 +22,7 @@ const listRoomsAvailable = `SELECT
   JOIN bookings 
 	ON rooms.id = bookings.room_id 
   WHERE check_out < DATE(NOW())`
-  
+
 const upcomingBookings = `SELECT
 	room_number, 
   name, 
@@ -37,6 +36,7 @@ const upcomingBookings = `SELECT
   rooms ON rooms.id = bookings.room_id
   WHERE check_in > DATE(NOW())
   OR check_out > DATE(NOW())`
+
 
 const singleRooms = `SELECT
 	room_number, 
@@ -56,3 +56,4 @@ const queryFunctions = {
 }
 
 module.exports = queryFunctions
+
