@@ -188,8 +188,8 @@ $ node hotel.js bookings 3B
 - [x] __10:__ All files are stored under the `part-2/` folder
 - [x] __10:__ Database schema (all `CREATE TABLE` statements) is defined in a file `schema.sql`
 - [x] __10:__ SQL statements to insert seed data into all tables is added to the file `load-data.sql` (either create your own seed data or use the files provided: [rooms.csv][hotel-rooms] | [bookings.csv][hotel-bookings] | [guests.csv][hotel-guests])
-- [ ] __10:__ All database query functions are written in a file `database.js`, and tests for queries are written in a file `database_test.js`
-- [ ] __10:__ Tests can be run with the command `$ npm test`
+- [x] __10:__ All database query functions are written in a file `database.js`, and tests for queries are written in a file `database_test.js`
+- [x] __10:__ Tests can be run with the command `$ npm test`
 
 User Stories: Ensure that your schema design can satisfy the following scenarios
 - [x] __10__: As a hotel manager I can get a list of all guests
@@ -203,9 +203,9 @@ Command line interface requirements
 - [x] __30__: Command `bookings` has been implemented to the above specifications
 
 Write tests with [Mocha](https://mochajs.org/) + [Chai](http://chaijs.com/) in `database_test.js` that assert:
-- [ ] __20__: The database function for the command `guests` is tested
-- [ ] __20__: The database function for the command `rooms` is tested
-- [ ] __20__: The database function for the command `bookings` is tested
+- [x] __20__: The database function for the command `guests` is tested
+- [x] __20__: The database function for the command `rooms` is tested
+- [x] __20__: The database function for the command `bookings` is tested
 
 ## Part 3: Web interface for hotel manager
 
