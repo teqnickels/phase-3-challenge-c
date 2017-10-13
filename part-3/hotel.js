@@ -12,11 +12,33 @@ window.addEventListener('load', () => {
 
   const openModal = (button) => {
     modal.className = "modal-display";
+    let room2b = document.getElementById("room2B").childNodes;
+    console.log(room2b[1].innerText, room2b[2].innerText, room2b[5].innerText)
 
       switch (button) {
         case button1:
-          console.log("BUTTON 1 CLICKED!")
-          break;
+          let modalTable = document.getElementsByClassName("modal-table-body")[0];
+          let row1 = modalTable.insertRow(0);
+          let cell1 = row1.insertCell(0);
+          let cell2 = row1.insertCell(1)
+          cell1.innerHTML = "Room " + `${room2b[1].innerText}`
+          cell2.innerHTML = `${room2b[5].innerText}` + "/night";
+
+          let row2 = modalTable.insertRow(1);
+          let cell3 = row2.insertCell(0);
+          let cell4 = row2.insertCell(1)
+          cell3.innerHTML = "check-in"
+          cell4.innerHTML = '<input id="date" type="date">'
+
+          let row3 = modalTable.insertRow(2);
+          let cell5 = row3.insertCell(0);
+          let cell6 = row2.insertCell(1)
+          cell5.innerHTML = "nights"
+          cell6.innerHTML = '<input id="date" type="date">'< select > < option value = "1" > 1 </option> <option value = "2" > 2 </option > < option value = "3" > 3 </option> <option value = "4" > 4 </option > </select><option value = "5" > 5 </option > </select>
+          
+
+
+        break;
 
         case button2:
           console.log("BUTTON 2 CLICKED!")
