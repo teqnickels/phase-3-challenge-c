@@ -17,23 +17,25 @@ const listRoomsAvailable = `SELECT
   WHERE check_out < DATE(NOW())`
 
 const upcomingBookings = `SELECT
-	room_number, name, to_char(check_in, 'DD/MM/YYYY') AS check_in,	to_char(check_out, 'DD/MM/YYYY') AS check_out	
+	room_number, name, to_char(check_in, 'YYYY/MM/DD') AS check_in,	to_char(check_out, 'YYYY/MM/DD') AS check_out
   FROM guests
   INNER JOIN
   bookings ON guests.id = bookings.guest_id
   INNER JOIN
   rooms ON rooms.id = bookings.room_id
   WHERE check_in > CURRENT_DATE
-  OR check_out > CURRENT_DATE`
+  OR check_out > CURRENT_DATE
+  ORDER BY Check_in ASC`
 
 const singleRooms = `SELECT
-	room_number, name, to_char(check_in, 'DD/MM/YYYY') AS check_in, to_char(check_out, 'DD/MM/YYYY') AS check_out
+	room_number, name, to_char(check_in, 'YYYY/MM/DD') AS check_in,	to_char(check_out, 'YYYY/MM/DD') AS check_out
   FROM guests
   INNER JOIN
   bookings ON guests.id = bookings.guest_id
   INNER JOIN
   rooms ON rooms.id = bookings.room_id
-  WHERE room_number = $1 AND (check_in > CURRENT_DATE OR (check_out > CURRENT_DATE))`
+  WHERE room_number = $1 AND (check_in > CURRENT_DATE OR (check_out > CURRENT_DATE))
+  ORDER BY check_in ASC`
 
 const queryFunctions = {
   list : () => db.any(listGuests),
